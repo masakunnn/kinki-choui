@@ -541,6 +541,10 @@
             
                     for (const found of class30.stations) {
                         let rawAgency = found.typeName || class30.typeName || "";
+
+                        // 「(地図では自治体等)」という文字列が含まれていたら、空文字に置き換えて消す
+                        rawAgency = rawAgency.replace("(地図では自治体等)", "");
+
                         let agencyName = (rawAgency === "" || rawAgency === "気象庁")
                             ? "気象庁"
                             : `気象庁・${rawAgency}`;

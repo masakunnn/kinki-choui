@@ -543,7 +543,8 @@
                         let rawAgency = found.typeName || class30.typeName || "";
 
                         // 「(地図では自治体等)」という文字列が含まれていたら、空文字に置き換えて消す
-                        rawAgency = rawAgency.replace("(地図では自治体等)", "");
+                        // カッコとその中身をすべて消す場合
+                        rawAgency = rawAgency.replace(/\(.*\)/g, "");
 
                         let agencyName = (rawAgency === "" || rawAgency === "気象庁")
                             ? "気象庁"

@@ -544,7 +544,8 @@
 
                         // 「(地図では自治体等)」という文字列が含まれていたら、空文字に置き換えて消す
                         // カッコとその中身をすべて消す場合
-                        rawAgency = rawAgency.replace(/\(.*\)/g, "");
+                        // カッコ（全角・半角両方）とその中身をすべて消す
+                        rawAgency = rawAgency.replace(/[（\(].*?[）\)]/g, "");
 
                         let agencyName = (rawAgency === "" || rawAgency === "気象庁")
                             ? "気象庁"
